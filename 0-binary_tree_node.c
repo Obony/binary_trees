@@ -8,25 +8,18 @@
  * Return: If an error occurs - NULL.
  *         Otherwise - a pointer to the new node.
  */
-
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
 {
-	binary_tree_t *new_n;
-	/* Allocate memory for the new node */
+	binary_tree_t *new;
 
-	new_n = malloc(sizeof(binary_tree_t));
+	new = malloc(sizeof(binary_tree_t));
+	if (new == NULL)
+		return (NULL);
 
-	if (new_n == NULL)
-	return (NULL);
+	new->n = value;
+	new->parent = parent;
+	new->left = NULL;
+	new->right = NULL;
 
-	/* Set the value and parent of the new node */
-	new_n->n = value;
-	new_n->parent = parent;
-
-	/* Initialize the left and right child pointers to NULL */
-	new_n->left = NULL;
-	new_n->right = NULL;
-
-	/* Return a pointer to the new node */
-	return (new_n);
+	return (new);
 }
